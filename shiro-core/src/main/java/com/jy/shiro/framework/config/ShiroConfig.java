@@ -128,7 +128,7 @@ public class ShiroConfig {
     @Bean(name = "shiroRealm")
     public ShiroRealm shiroRealm(@Qualifier("credentialsMatcher") RetryLimitCredentialsMatcher matcher) {
         ShiroRealm shiroRealm = new ShiroRealm();
-        shiroRealm.setCredentialsMatcher(credentialsMatcher());
+        shiroRealm.setCredentialsMatcher(matcher);
         return shiroRealm;
     }
 
