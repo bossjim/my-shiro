@@ -17,14 +17,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.jiny.shiro;
-
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+package com.jiny.shiro.business.consts;
 
 /**
- * 程序启动类
+ * 程序中公用的常量类
  *
  * @author yadong.zhang (yadong.zhang0415(a)gmail.com)
  * @version 1.0
@@ -32,10 +28,20 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2018/4/16 16:26
  * @since 1.0
  */
-@SpringBootApplication
-public class ShiroAdminApplication {
+public class CommonConst {
+    /**
+     * 安全密码(UUID生成)，作为盐值用于用户密码的加密
+     */
+    public static final String ZYD_SECURITY_KEY = "929123f8f17944e8b0a531045453e1f1";
 
-    public static void main(String[] args) {
-        SpringApplication.run(ShiroAdminApplication.class, args);
-    }
+    /**
+     * 程序默认的错误状态码
+     */
+    public static final int DEFAULT_ERROR_CODE = 500;
+
+    /**
+     * 程序默认的成功状态码
+     */
+    public static final int DEFAULT_SUCCESS_CODE = 200;
+
 }

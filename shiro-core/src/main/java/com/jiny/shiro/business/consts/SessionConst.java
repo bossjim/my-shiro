@@ -17,25 +17,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.jiny.shiro;
-
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+package com.jiny.shiro.business.consts;
 
 /**
- * 程序启动类
- *
  * @author yadong.zhang (yadong.zhang0415(a)gmail.com)
- * @version 1.0
  * @website https://www.zhyd.me
+ * @version 1.0
  * @date 2018/4/16 16:26
  * @since 1.0
  */
-@SpringBootApplication
-public class ShiroAdminApplication {
-
-    public static void main(String[] args) {
-        SpringApplication.run(ShiroAdminApplication.class, args);
-    }
+public class SessionConst {
+    /**
+     * User 的 session key;k
+     */
+    public static final String USER_SESSION_KEY = "user";
 }

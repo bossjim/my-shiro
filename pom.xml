@@ -13,7 +13,7 @@
         <version>2.0.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.jiny</groupId>
+    <groupId>com.jiny.shiro</groupId>
     <artifactId>shiro</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>shiro</name>

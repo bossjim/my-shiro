@@ -17,14 +17,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.jiny.shiro;
+package com.jiny.shiro.framework.object;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import java.util.List;
 
 /**
- * 程序启动类
+ * bootstrap table用到的返回json格式
  *
  * @author yadong.zhang (yadong.zhang0415(a)gmail.com)
  * @version 1.0
@@ -32,10 +33,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2018/4/16 16:26
  * @since 1.0
  */
-@SpringBootApplication
-public class ShiroAdminApplication {
+@Data
+@EqualsAndHashCode(callSuper = false)
+public class PageResult {
+    private Long total;
+    private List rows;
 
-    public static void main(String[] args) {
-        SpringApplication.run(ShiroAdminApplication.class, args);
+    public PageResult(Long total, List rows) {
+        this.total = total;
+        this.rows = rows;
+    }
+
+    public PageResult() {
     }
 }

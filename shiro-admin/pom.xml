@@ -4,17 +4,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>shiro</artifactId>
-        <groupId>com.jiny</groupId>
+        <groupId>com.jiny.shiro</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>shiro-admin</artifactId>
 
-
     <dependencies>
         <dependency>
-            <groupId>com.jy.shiro</groupId>
+            <groupId>com.jiny.shiro</groupId>
             <artifactId>shiro-core</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
