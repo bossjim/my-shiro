@@ -1,18 +1,14 @@
 /**
  * MIT License
- *
  * Copyright (c) 2018 yadong.zhang
- *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -21,41 +17,35 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.jy.shiro.framework.object;
+package com.jy.shiro.framework.property;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 
-import java.util.Date;
+import java.util.List;
 
 /**
+ * druid属性
+ *
  * @author yadong.zhang (yadong.zhang0415(a)gmail.com)
- * @website https://www.zhyd.me
  * @version 1.0
- * @date 2018/4/16 16:26
+ * @website https://www.zhyd.me
+ * @date 2018/5/17 11:13
  * @since 1.0
  */
+@Configuration
+@ConfigurationProperties(prefix = "zyd.druid")
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class BaseConditionVO {
-    public final static int DEFAULT_PAGE_SIZE = 2;
-    private int pageNumber = 1;
-    private int pageSize = 0;
-    private int pageStart = 0;
-    private String orderField;
-    private String orderDirection;
-    private String keywords;
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date startDate;
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date endDate;
-
-    public int getPageSize() {
-        return pageSize > 0 ? pageSize : DEFAULT_PAGE_SIZE;
-    }
-
-    public int getPageStart() {
-        return pageNumber > 0 ? (pageNumber - 1) * getPageSize() : 0;
-    }
+@Order(-1)
+public class DruidProperties {
+    private String username;
+    private String password;
+    private String servletPath = "/druid/*";
+    private Boolean resetEnable = false;
+    private List<String> allowIps;
+    private List<String> denyIps;
 }

@@ -14,6 +14,20 @@ server:
         port-header: X-Forwarded-Port
         uri-encoding: UTF-8
         basedir: /var/tmp/website-app
+################### dubbo客户端配置 #########################
+#dubbo:
+#    application:
+#        name: dubbo-consumer
+#    protocol:
+#        name: dubbo
+#        port: 20880
+#    registry:
+#        address: zookeeper://localhost:2181
+#    consumer:
+#        timeout: 5000
+#demo:
+#    service:
+#        version: 1.0.0
 # SPRING PROFILES
 spring:
     datasource:
@@ -21,7 +35,7 @@ spring:
         driver-class-name: com.mysql.jdbc.Driver
         url: jdbc:mysql://localhost:3306/shiro?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
         username: root
-        password:
+        password: root
     application:
         name: shiro-admin
     freemarker:
@@ -121,3 +135,5 @@ zyd:
         allowIps[0]:
         # 黑名单(非必填)， list
         denyIps[0]:
+
+

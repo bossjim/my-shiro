@@ -1,18 +1,14 @@
 /**
  * MIT License
- *
  * Copyright (c) 2018 yadong.zhang
- *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -21,41 +17,31 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.jy.shiro.framework.object;
+package com.jy.shiro.framework.config;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import java.util.Date;
+import com.jy.shiro.framework.interceptor.RememberAuthenticationInterceptor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * @author yadong.zhang (yadong.zhang0415(a)gmail.com)
- * @website https://www.zhyd.me
  * @version 1.0
- * @date 2018/4/16 16:26
+ * @website https://www.zhyd.me
+ * @date 2018/7/15 15:03
  * @since 1.0
  */
-@Data
-@EqualsAndHashCode(callSuper = false)
-public class BaseConditionVO {
-    public final static int DEFAULT_PAGE_SIZE = 2;
-    private int pageNumber = 1;
-    private int pageSize = 0;
-    private int pageStart = 0;
-    private String orderField;
-    private String orderDirection;
-    private String keywords;
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date startDate;
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date endDate;
+@Configuration
+public class WebMvcConfig implements WebMvcConfigurer {
 
-    public int getPageSize() {
-        return pageSize > 0 ? pageSize : DEFAULT_PAGE_SIZE;
-    }
+    @Autowired
+    private RememberAuthenticationInterceptor rememberAuthenticationInterceptor;
 
-    public int getPageStart() {
-        return pageNumber > 0 ? (pageNumber - 1) * getPageSize() : 0;
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(rememberAuthenticationInterceptor)
+                .excludePathPatterns("/passport/**", "/error/**", "/assets/**", "favicon.ico")
+                .addPathPatterns("/**");
     }
 }

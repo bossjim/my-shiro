@@ -72,4 +72,15 @@ public class RenderController {
         return ResultUtil.view("role/list");
     }
 
+    @RequiresPermissions("blog")
+    @GetMapping("/blog")
+    public ModelAndView blog() {
+        return ResultUtil.view("blog/list");
+    }
+
+    @RequiresPermissions("ttst")
+    @GetMapping("/ttst")
+    public ModelAndView ttst() {
+        return ResultUtil.view("blog/list");
+    }
 }

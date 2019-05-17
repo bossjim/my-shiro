@@ -145,7 +145,7 @@ public class SysUserServiceImpl implements SysUserService {
     @Override
     public User getByPrimaryKey(Long primaryKey) {
         Assert.notNull(primaryKey, "PrimaryKey不可为空！");
-        SysUser sysUser = sysUserMapper.selectByPrimaryKey(primaryKey);
+        SysUser sysUser = sysUserMapper. selectByPrimaryKey(primaryKey);
         return null == sysUser ? null : new User(sysUser);
     }
 
@@ -207,8 +207,8 @@ public class SysUserServiceImpl implements SysUserService {
         for (SysUser su : sysUsers) {
             users.add(new User(su));
         }
-        PageInfo bean = new PageInfo<SysUser>(sysUsers);
-        bean.setList(users);
+        PageInfo bean = new PageInfo<User>(users);
+//        bean.setList(users);
         return bean;
     }
 

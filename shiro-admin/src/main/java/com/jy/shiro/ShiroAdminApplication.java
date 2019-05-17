@@ -19,8 +19,11 @@
  */
 package com.jy.shiro;
 
+import com.alibaba.dubbo.config.spring.context.annotation.EnableDubbo;
+import com.jy.shiro.dubbo.service.CityDubboConsumerService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 /**
  * 程序启动类
@@ -31,10 +34,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2018/4/16 16:26
  * @since 1.0
  */
+//@EnableDubbo
 @SpringBootApplication
 public class ShiroAdminApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ShiroAdminApplication.class, args);
+        ConfigurableApplicationContext run = SpringApplication.run(ShiroAdminApplication.class, args);
+//        CityDubboConsumerService cityService = run.getBean(CityDubboConsumerService.class);
+//        cityService.printCity();
     }
 }
